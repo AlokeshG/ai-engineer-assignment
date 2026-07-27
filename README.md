@@ -2,96 +2,71 @@
 
 This repository contains my solution for the AI Engineer technical assessment.
 
----
-
-# Repository Structure
+## Repository Structure
 
 ```
 ai-engineer-assignment/
 │
 ├── part1-token-optimization/
-│   ├── baseline.py
-│   ├── optimized.py
-│   └── sample_results.md
-│
 ├── part2-debugging/
-│
-├── .github/
-│   └── workflows/
-│
+├── part3-cicd/
+├── .github/workflows/
 ├── README.md
 └── requirements.txt
 ```
 
 ---
 
-# Part 1 – Token & Cost Optimization
+## Part 1 – Token & Cost Optimization
 
-## Problem
+Implemented two optimizations to reduce token usage in a multi-agent pipeline:
 
-The baseline multi-agent pipeline consumes approximately **100,000 input tokens per query** because every agent receives:
+- Retrieval Chunking
+- Conversation Summarization
 
-- Complete retrieved documents
-- Full conversation history
-- Long system prompts
+### Results
 
-This results in higher inference cost and increased response latency.
-
-## Optimizations Implemented
-
-### 1. Retrieval Chunking
-
-Instead of sending the complete document to every agent, only the most relevant semantic chunks are retrieved.
-
-**Benefits**
-
-- Reduces unnecessary context
-- Faster inference
-- Lower API cost
-
-### 2. Conversation Summarization
-
-Instead of including the full chat history, the pipeline sends:
-
-- Conversation summary
-- Recent messages
-- Current user query
-
-This significantly reduces token usage while preserving context.
-
-## Token Comparison
-
-| Pipeline | Tokens |
-|-----------|---------:|
-| Original | 100,000 |
-| Optimized | 18,000 |
-
-**Overall Reduction:** **82%**
+| Metric | Before | After |
+|--------|--------:|------:|
+| Input Tokens | 100,000 | 18,000 |
+| Reduction | - | 82% |
 
 ---
 
-# Part 2 – Debugging
+## Part 2 – Debugging
 
-(To be implemented)
+Documented a structured debugging methodology for an intermittent multi-agent pipeline.
 
-This section documents my structured debugging methodology for intermittent failures in multi-agent AI workflows, including timeout analysis, malformed outputs, and incorrect responses.
+Covered:
+
+- Timeout investigation
+- Log analysis
+- Malformed JSON handling
+- Incorrect output investigation
+- Regression testing
 
 ---
 
-# Part 3 – CI/CD & Deployment
+## Part 3 – CI/CD & Deployment
 
-(To be implemented)
+Implemented a GitHub Actions workflow that:
 
-This section includes:
+- Runs on every push
+- Sets up Python
+- Installs dependencies
+- Runs linting
+- Runs tests
+- Simulates deployment to a staging environment
 
-- GitHub Actions CI pipeline
-- Automated staging deployment
-- Secure secrets management
+Also documented:
+
+- Secrets management
 - Rollback strategy
+- Deployment process
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 - Python
 - Git
@@ -100,6 +75,6 @@ This section includes:
 
 ---
 
-# Author
+## Author
 
 **Alokesh Ghosh**
