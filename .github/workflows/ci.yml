@@ -37,21 +37,19 @@ jobs:
         run: |
           pip install flake8 pytest
 
-        - name: Run Lint
-    run: |
-      echo "Running lint..."
-      echo "Lint completed successfully."
+      - name: Run Lint
+        run: |
+          echo "Running lint..."
+          echo "Lint completed successfully."
 
-  - name: Run Tests
-    run: |
-      echo "Running tests..."
-      echo "All tests passed."
+      - name: Run Tests
+        run: |
+          echo "Running tests..."
+          echo "All tests passed."
 
   deploy-staging:
     needs: test-and-lint
-
     if: github.ref == 'refs/heads/main'
-
     runs-on: ubuntu-latest
 
     steps:
